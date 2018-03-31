@@ -1,4 +1,4 @@
-# OpenSSL 1.0.2n
+# OpenSSL 1.0.2o
 
 ## Visual Studio (with cmd, unpack the archive with cygwin tar)
 
