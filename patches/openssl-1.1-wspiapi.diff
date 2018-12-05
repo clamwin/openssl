@@ -1,0 +1,12 @@
+diff -ur openssl-1.1.1a.orig/e_os.h openssl-1.1.1a/e_os.h
+--- openssl-1.1.1a.orig/e_os.h	2018-11-20 14:35:40.000000000 +0100
++++ openssl-1.1.1a/e_os.h	2018-12-11 00:28:00.579283547 +0100
+@@ -125,7 +125,7 @@
+         * at run-time [DSO_global_lookup is recommended]...
+         */
+ #    include <winsock2.h>
+-#    include <ws2tcpip.h>
++#    include <wspiapi.h>
+        /* yes, they have to be #included prior to <windows.h> */
+ #   endif
+ #   include <windows.h>

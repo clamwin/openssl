@@ -1,43 +1,45 @@
-# OpenSSL 1.0.2p
+# OpenSSL 1.1.1a - with Visual Studio 2005 (and maybe newer)
 
-## Visual Studio (with cmd, unpack the archive with cygwin tar)
+## Visual Studio (with VS cmd, unpack the archive with cygwin tar)
 
 ### 32bit
 ```bat
-perl Configure VC-WIN32 --prefix=C:\Work\Clamav\openssl\win32\build no-dynamic-engine
-ms\do_nasm.bat
+perl Configure VC-WIN32 -D_WIN32_WINNT=0x0501 no-dynamic-engine no-capieng no-shared no-async no-dso --prefix=C:\Work\Clamav\openssl\win32\build
 ```
 
-edit ms\nt.mak and replace /MT with /MD
+You may need to disable `/WX` in `Configurations/10-main.conf` before running Configure,
+just remove the line:
+
+```perl
+CFLAGS           => add("/WX"),
+```
 
 ```bat
 :: Optional for multicore build
 set CL=/MP
-nmake -f ms\nt.mak
-nmake -f ms\nt.mak install
+
+nmake
+nmake install_dev
 ```
 
 
 ### 64bit
 ```bat
-perl Configure VC-WIN64A --prefix=C:\Work\Clamav\openssl\x64\build no-dynamic-engine
-ms\do_win64a.bat
+perl Configure VC-WIN64A no-dynamic-engine no-capieng no-shared no-async no-dso --prefix=C:\Work\Clamav\openssl\x64\build
 ```
-
-edit ms\nt.mak and replace /MT with /MD
 
 ```bat
 :: Optional for multicore build
 set CL=/MP
-nmake -f ms\nt.mak
-nmake -f ms\nt.mak install
+
+nmake
+nmake install_dev
 ```
 
 
-## MinGW (with MSYS shell, unpack the archive with MinGW tar)
+## MinGW (Currently cross-compiled on Linux)
 ```sh
-perl Configure mingw no-shared --prefix=/c/Work/Clamav/openssl/mingw/build no-dynamic-engine
-make depend
-make
-make install_sw
+./Configure mingw no-shared no-dynamic-engine no-capieng no-async no-dso --cross-compile-prefix=i686-w64-mingw32- --prefix=`pwd`/../dist
+make -jX
+make install_dev
 ```
