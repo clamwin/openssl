@@ -1,13 +1,26 @@
-diff -ur openssl-1.1.1a.orig/crypto/threads_win.c openssl-1.1.1a/crypto/threads_win.c
 --- openssl-1.1.1a.orig/crypto/threads_win.c	2018-11-20 14:35:38.000000000 +0100
-+++ openssl-1.1.1a/crypto/threads_win.c	2018-12-11 01:14:42.469846843 +0100
-@@ -25,7 +25,8 @@
-     }
++++ openssl-1.1.1a/crypto/threads_win.c	2019-01-13 18:00:34.784462932 +0100
+@@ -26,8 +26,21 @@
  
      /* 0x400 is the spin count value suggested in the documentation */
--    if (!InitializeCriticalSectionAndSpinCount(lock, 0x400)) {
-+    /* on Win9x InitializeCriticalSectionAndSpinCount calls InitializeCriticalSection and returns 0 */
-+    if (!InitializeCriticalSectionAndSpinCount(lock, 0x400) && (GetLastError() != ERROR_SUCCESS)) {
-         OPENSSL_free(lock);
-         return NULL;
+     if (!InitializeCriticalSectionAndSpinCount(lock, 0x400)) {
+-        OPENSSL_free(lock);
+-        return NULL;
++        /* check if win9x */
++        OSVERSIONINFOA osv;
++
++        osv.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
++        osv.dwPlatformId = 0x0010400;
++
++        GetVersionExW((LPOSVERSIONINFOA) &osv);
++
++        if (osv.dwPlatformId & VER_PLATFORM_WIN32_NT) {
++            OPENSSL_free(lock);
++            return NULL;
++        }
++
++        /* let's hope it works */
++        InitializeCriticalSection(lock);
      }
+ 
+     return lock;
