@@ -1,7 +1,8 @@
---- openssl-1.1.1a.orig/crypto/threads_win.c	2018-11-20 14:35:38.000000000 +0100
-+++ openssl-1.1.1a/crypto/threads_win.c	2019-01-13 18:00:34.784462932 +0100
-@@ -26,8 +26,21 @@
- 
+diff -ur openssl-1.1.1c.orig/crypto/threads_win.c openssl-1.1.1c/crypto/threads_win.c
+--- openssl-1.1.1c.orig/crypto/threads_win.c	2019-05-28 15:12:21.000000000 +0200
++++ openssl-1.1.1c/crypto/threads_win.c	2019-08-07 23:49:12.361673061 +0200
+@@ -27,8 +27,21 @@
+ #if !defined(_WIN32_WCE)
      /* 0x400 is the spin count value suggested in the documentation */
      if (!InitializeCriticalSectionAndSpinCount(lock, 0x400)) {
 -        OPENSSL_free(lock);
@@ -22,5 +23,5 @@
 +        /* let's hope it works */
 +        InitializeCriticalSection(lock);
      }
- 
-     return lock;
+ #else
+     InitializeCriticalSection(lock);

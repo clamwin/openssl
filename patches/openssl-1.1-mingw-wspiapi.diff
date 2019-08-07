@@ -1,7 +1,7 @@
-diff -ur openssl-1.1.1b.orig/e_os.h openssl-1.1.1b/e_os.h
---- openssl-1.1.1b.orig/e_os.h	2019-02-26 15:15:30.000000000 +0100
-+++ openssl-1.1.1b/e_os.h	2019-03-31 18:36:38.963598608 +0200
-@@ -128,7 +128,7 @@
+diff -ur openssl-1.1.1c.orig/e_os.h openssl-1.1.1c/e_os.h
+--- openssl-1.1.1c.orig/e_os.h	2019-05-28 15:12:21.000000000 +0200
++++ openssl-1.1.1c/e_os.h	2019-08-07 23:50:06.605361724 +0200
+@@ -127,7 +127,7 @@
          * at run-time [DSO_global_lookup is recommended]...
          */
  #    include <winsock2.h>
