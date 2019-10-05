@@ -1,4 +1,4 @@
-# OpenSSL 1.1.1c - with Visual Studio 2005 (and maybe newer)
+# OpenSSL 1.1.1d - with Visual Studio 2005 (and maybe newer)
 
 ## Visual Studio (with VS cmd, unpack the archive with cygwin tar)
 

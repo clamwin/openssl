@@ -78,6 +78,9 @@ extern "C" {
 #ifndef OPENSSL_NO_MSAN
 # define OPENSSL_NO_MSAN
 #endif
+#ifndef OPENSSL_NO_PINSHARED
+# define OPENSSL_NO_PINSHARED
+#endif
 #ifndef OPENSSL_NO_SCTP
 # define OPENSSL_NO_SCTP
 #endif
