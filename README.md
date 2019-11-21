@@ -6,16 +6,21 @@
 
 (optionally apply `openssl-1.1-crypto-init-win9x.diff`)
 
-```bat
-perl Configure VC-WIN32 -D_WIN32_WINNT=0x0501 no-shared no-pinshared no-dynamic-engine no-capieng no-async  --prefix=C:\Work\Clamav\openssl\win32\build
-```
-
 You may need to disable `/WX` in `Configurations/10-main.conf` before running Configure,
 just remove the line:
 
 ```perl
 CFLAGS           => add("/WX"),
 ```
+
+then
+
+```bat
+perl Configure VC-WIN32 no-shared no-pinshared no-dynamic-engine no-capieng no-async --prefix=C:\Work\Clamav\openssl\win32\build
+```
+
+Add `-D_WIN32_WINNT=0x0501` for backward compatibility.
+
 
 ```bat
 :: Optional for multicore build
