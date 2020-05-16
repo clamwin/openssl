@@ -1,6 +1,6 @@
-# OpenSSL 1.1.1d - with Visual Studio 2005 (and maybe newer)
+# OpenSSL 1.1.1g - tested with Visual Studio 2019 CE
 
-## Visual Studio (with VS cmd, unpack the archive with cygwin tar)
+## Visual Studio (with VS cmd, unpack the archive with Windows 10 tar)
 
 ### 32bit
 
