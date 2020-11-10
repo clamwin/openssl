@@ -1,4 +1,4 @@
-# OpenSSL 1.1.1g - tested with Visual Studio 2019 CE
+# OpenSSL 1.1.1h - built with Visual Studio 2019 CE, MinGW-w64 (cross)
 
 ## Visual Studio (with VS cmd, unpack the archive with Windows 10 tar)
 
@@ -26,7 +26,6 @@ Add `-D_WIN32_WINNT=0x0501` for backward compatibility.
 :: Optional for multicore build
 set CL=/MP
 
-nmake
 nmake install_dev
 ```
 
@@ -40,7 +39,6 @@ perl Configure VC-WIN64A no-shared no-pinshared no-dynamic-engine no-capieng no-
 :: Optional for multicore build
 set CL=/MP
 
-nmake
 nmake install_dev
 ```
 
