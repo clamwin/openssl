@@ -1,4 +1,4 @@
-# OpenSSL 1.1.1h - built with Visual Studio 2019 CE, MinGW-w64 (cross)
+# OpenSSL 1.1.1k - built with Visual Studio 2019 CE, MinGW-w64 (cross)
 
 ## Visual Studio (with VS cmd, unpack the archive with Windows 10 tar)
 
@@ -55,7 +55,7 @@ make -jX
 make install_dev
 ```
 
-### x86_x64
+### x86\_x64
 ```sh
 ./Configure mingw64 no-shared no-pinshared no-dynamic-engine no-capieng no-async --cross-compile-prefix=x86_64-w64-mingw32- --prefix=`pwd`/../dist64
 make -jX
