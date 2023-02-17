@@ -1,4 +1,4 @@
-# OpenSSL 1.1.1q - built with Visual Studio 2019 CE, MinGW-w64 (cross)
+# OpenSSL 1.1.1t - built with Visual Studio 2022 CE, MinGW-w64 (cross)
 
 ## Visual Studio (with VS cmd, unpack the archive with Windows 10 tar)
 
