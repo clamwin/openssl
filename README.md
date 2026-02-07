@@ -1,4 +1,4 @@
-# OpenSSL 3.5.4 static library - built with Visual Studio 2022 CE, MinGW-w64 (cross)
+# OpenSSL 3.5.5 static library - built with Visual Studio 2026 CE, MinGW-w64 (cross)
 
 ## Visual Studio (with VS cmd, unpack the archive with Windows 10 tar)
 

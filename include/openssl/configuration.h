@@ -12,21 +12,22 @@
  */
 
 #ifndef OPENSSL_CONFIGURATION_H
-# define OPENSSL_CONFIGURATION_H
-# pragma once
+#define OPENSSL_CONFIGURATION_H
+#pragma once
 
-# ifdef  __cplusplus
+#ifdef __cplusplus
 extern "C" {
-# endif
+#endif
 
-# ifdef OPENSSL_ALGORITHM_DEFINES
-#  error OPENSSL_ALGORITHM_DEFINES no longer supported
-# endif
+#ifdef OPENSSL_ALGORITHM_DEFINES
+#error OPENSSL_ALGORITHM_DEFINES no longer supported
+#endif
 
 /*
  * OpenSSL was configured with the following options:
  */
 
+/* clang-format off */
 # ifndef OPENSSL_SYS_WIN32
 #  define OPENSSL_SYS_WIN32 1
 # endif
@@ -197,32 +198,37 @@ extern "C" {
 #  define OPENSSL_NO_DYNAMIC_ENGINE
 # endif
 
+/* clang-format on */
 
 /* Generate 80386 code? */
+/* clang-format off */
 # undef I386_ONLY
+/* clang-format on */
 
 /*
  * The following are cipher-specific, but are part of the public API.
  */
-# if !defined(OPENSSL_SYS_UEFI)
+#if !defined(OPENSSL_SYS_UEFI)
 #  ifdef _WIN64
 #   define SIXTY_FOUR_BIT
 #  else
 #   define THIRTY_TWO_BIT
 #   define BN_LLONG
 #  endif
-# endif
+#endif
 
+/* clang-format off */
 # define RC4_INT unsigned int
+/* clang-format on */
 
-# if defined(OPENSSL_NO_COMP) || (defined(OPENSSL_NO_BROTLI) && defined(OPENSSL_NO_ZSTD) && defined(OPENSSL_NO_ZLIB))
-#  define OPENSSL_NO_COMP_ALG
-# else
-#  undef  OPENSSL_NO_COMP_ALG
-# endif
+#if defined(OPENSSL_NO_COMP) || (defined(OPENSSL_NO_BROTLI) && defined(OPENSSL_NO_ZSTD) && defined(OPENSSL_NO_ZLIB))
+#define OPENSSL_NO_COMP_ALG
+#else
+#undef OPENSSL_NO_COMP_ALG
+#endif
 
-# ifdef  __cplusplus
+#ifdef __cplusplus
 }
-# endif
+#endif
 
-#endif                          /* OPENSSL_CONFIGURATION_H */
+#endif /* OPENSSL_CONFIGURATION_H */
