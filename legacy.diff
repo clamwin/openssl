@@ -33,7 +33,7 @@ index c2a08ebed1..e821c7c59d 100644
   * Clang-based C++Builder 10.3.3 toolchains cannot find C inline
   * definitions at link-time.  This header defines WspiapiLoad() as an
 diff --git a/providers/implementations/rands/seeding/rand_win.c b/providers/implementations/rands/seeding/rand_win.c
-index 323a579ac4..3ad3182dd2 100644
+index 323a579ac4..54ac9226c5 100644
 --- a/providers/implementations/rands/seeding/rand_win.c
 +++ b/providers/implementations/rands/seeding/rand_win.c
 @@ -41,7 +41,7 @@
@@ -45,21 +45,26 @@ index 323a579ac4..3ad3182dd2 100644
  #endif
  
  size_t ossl_pool_acquire_entropy(RAND_POOL *pool)
-@@ -86,7 +86,7 @@ size_t ossl_pool_acquire_entropy(RAND_POOL *pool)
+@@ -86,8 +86,8 @@ size_t ossl_pool_acquire_entropy(RAND_POOL *pool)
      if (buffer != NULL) {
          size_t bytes = 0;
          /* poll the CryptoAPI PRNG */
 -        if (CryptAcquireContextW(&hProvider, NULL, NULL, PROV_RSA_FULL,
+-                CRYPT_VERIFYCONTEXT | CRYPT_SILENT)
 +        if (CryptAcquireContextA(&hProvider, NULL, NULL, PROV_RSA_FULL,
-                 CRYPT_VERIFYCONTEXT | CRYPT_SILENT)
++                CRYPT_VERIFYCONTEXT)
              != 0) {
              if (CryptGenRandom(hProvider, bytes_needed, buffer) != 0)
-@@ -106,7 +106,7 @@ size_t ossl_pool_acquire_entropy(RAND_POOL *pool)
+                 bytes = bytes_needed;
+@@ -106,9 +106,9 @@ size_t ossl_pool_acquire_entropy(RAND_POOL *pool)
      if (buffer != NULL) {
          size_t bytes = 0;
          /* poll the Pentium PRG with CryptoAPI */
 -        if (CryptAcquireContextW(&hProvider, NULL,
 +        if (CryptAcquireContextA(&hProvider, NULL,
                  INTEL_DEF_PROV, PROV_INTEL_SEC,
-                 CRYPT_VERIFYCONTEXT | CRYPT_SILENT)
+-                CRYPT_VERIFYCONTEXT | CRYPT_SILENT)
++                CRYPT_VERIFYCONTEXT)
              != 0) {
+             if (CryptGenRandom(hProvider, bytes_needed, buffer) != 0)
+                 bytes = bytes_needed;
