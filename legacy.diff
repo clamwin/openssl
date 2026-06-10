@@ -1,8 +1,8 @@
 diff --git a/crypto/threads_win.c b/crypto/threads_win.c
-index 51d489cdf0..06424f7522 100644
+index 2c0e27ce06..a71f78ab2f 100644
 --- a/crypto/threads_win.c
 +++ b/crypto/threads_win.c
-@@ -446,8 +446,14 @@ CRYPTO_RWLOCK *CRYPTO_THREAD_lock_new(void)
+@@ -449,8 +449,14 @@ CRYPTO_RWLOCK *CRYPTO_THREAD_lock_new(void)
  #if !defined(_WIN32_WCE)
      /* 0x400 is the spin count value suggested in the documentation */
      if (!InitializeCriticalSectionAndSpinCount(lock, 0x400)) {
